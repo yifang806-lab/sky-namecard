@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#05070C">
-<meta name="description" content="Sky — Your Kitchen Appliance Consultant. 帮助你选对厨房电器，不花冤枉钱。SEL / KL / KLANG / JB / PENANG。">
+<meta name="description" content="Sky — Your Kitchen Appliance Consultant. 帮助你选对厨房电器，不花冤枉钱。Bantu anda pilih peralatan dapur yang betul. SEL / KL / KLANG / JB / PENANG。">
 <meta property="og:title" content="SKY — Your Kitchen Appliance Consultant">
 <meta property="og:description" content="帮助你选对厨房电器，不花冤枉钱。">
 <meta property="og:type" content="website">
@@ -59,10 +59,10 @@
 
   /* ---------- language (pure CSS, works without JS) ---------- */
   .langbox{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
-  .en{display:none}
-  #lgen:checked ~ * .zh{display:none}
-  #lgen:checked ~ * span.en{display:inline}
-  #lgen:checked ~ * p.en{display:block}
+  .en,.bm{display:none}
+  #lgen:checked ~ * .zh,#lgbm:checked ~ * .zh{display:none}
+  #lgen:checked ~ * span.en,#lgbm:checked ~ * span.bm{display:inline}
+  #lgen:checked ~ * p.en,#lgbm:checked ~ * p.bm{display:block}
   .lang{display:flex;gap:4px;flex:none}
   .lang label{
     font-size:11.5px;font-weight:700;letter-spacing:.04em;cursor:pointer;
@@ -70,7 +70,8 @@
     border:1px solid var(--hair);line-height:1.5;
   }
   #lgzh:checked ~ * .lang label[for="lgzh"],
-  #lgen:checked ~ * .lang label[for="lgen"]{
+  #lgen:checked ~ * .lang label[for="lgen"],
+  #lgbm:checked ~ * .lang label[for="lgbm"]{
     background:linear-gradient(180deg,rgba(77,224,255,.24),rgba(139,107,255,.2));
     border-color:rgba(77,224,255,.5);color:var(--ice);
   }
@@ -92,7 +93,8 @@
   }
   .railnav{display:flex;gap:18px;font-size:13px;color:var(--dim);min-width:0}
   .railend{display:flex;align-items:center;gap:14px;min-width:0}
-  @media (max-width:430px){ .railnav{gap:13px;font-size:12.5px} .lang label{padding:4px 9px;font-size:11px} }
+  @media (max-width:430px){ .railnav{gap:11px;font-size:12px} .railend{gap:9px} .lang{gap:3px} .lang label{padding:4px 7px;font-size:10.5px} }
+  @media (max-width:375px){ .railnav a[href="#where"]{display:none} }
   .railnav a{color:inherit;text-decoration:none}
   .railnav a:hover{color:var(--ice)}
 
@@ -110,7 +112,7 @@
   }
 
   /* ---------- hero text ---------- */
-  .hero{position:relative;text-align:center;padding-block:clamp(22px,5vw,38px) clamp(42px,9vw,70px)}
+  .hero{position:relative;overflow-x:clip;text-align:center;padding-block:clamp(22px,5vw,38px) clamp(42px,9vw,70px)}
   .glow{
     position:absolute;left:50%;top:-90px;transform:translateX(-50%);
     width:min(760px,130vw);height:320px;z-index:0;pointer-events:none;
@@ -169,7 +171,7 @@
   .fig > span{display:block;margin-top:7px;color:var(--dim);font-size:13px;line-height:1.4}
   /* keep the numerals at full size; the Chinese joiner reads as a connector */
   .fig b em{font-style:normal;font-size:.56em;font-weight:600;padding:0 .08em;vertical-align:.14em}
-  .fig b .zh,.fig b .en{letter-spacing:-.02em}
+  .fig b .zh,.fig b .en,.fig b .bm{letter-spacing:-.02em}
   @media (max-width:430px){ .fig b{font-size:24px} .fig > span{font-size:11.5px} }
 
   /* ---------- sections ---------- */
@@ -308,19 +310,21 @@
 
 <input class="langbox" type="radio" name="lg" id="lgzh" checked>
 <input class="langbox" type="radio" name="lg" id="lgen">
+<input class="langbox" type="radio" name="lg" id="lgbm">
 
 <div class="rail">
   <div class="in">
     <span class="mark">SKY</span>
     <div class="railend">
       <nav class="railnav">
-        <a href="#ask"><span class="zh">咨询</span><span class="en">Enquiry</span></a>
-        <a href="#where"><span class="zh">地区</span><span class="en">Coverage</span></a>
-        <a href="#contact"><span class="zh">联络</span><span class="en">Contact</span></a>
+        <a href="#ask"><span class="zh">咨询</span><span class="en">Enquiry</span><span class="bm">Pertanyaan</span></a>
+        <a href="#where"><span class="zh">地区</span><span class="en">Coverage</span><span class="bm">Kawasan</span></a>
+        <a href="#contact"><span class="zh">联络</span><span class="en">Contact</span><span class="bm">Hubungi</span></a>
       </nav>
       <div class="lang">
         <label for="lgzh">中</label>
         <label for="lgen">EN</label>
+        <label for="lgbm">BM</label>
       </div>
     </div>
   </div>
@@ -336,10 +340,11 @@
   <p class="role fade d1">Your Kitchen Appliance&nbsp;Consultant</p>
   <p class="say zh">帮助你选对厨房电器，不花冤枉钱。</p>
   <p class="say en">Helping you pick the right kitchen appliances, without wasting money.</p>
+  <p class="say bm">Bantu anda pilih peralatan dapur yang betul, tanpa membazir wang.</p>
   <div class="heroLinks">
     <a class="prime" href="#ask">
       <svg class="wa" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.87 9.87 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.19 8.19 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23Zm4.52-6.17c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.43.13-.15.17-.25.25-.41.08-.17.04-.31-.02-.44-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.87.86-.87 2.08 0 1.23.9 2.42 1.02 2.58.12.17 1.76 2.68 4.26 3.76.6.26 1.06.41 1.42.53.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.08.14-1.18-.06-.11-.22-.17-.47-.29Z"/></svg>
-      <span class="zh">现在咨询</span><span class="en">Enquire now</span>
+      <span class="zh">现在咨询</span><span class="en">Enquire now</span><span class="bm">Tanya sekarang</span>
     </a>
     <a href="https://www.instagram.com/sky.kianyong/" target="_blank" rel="noopener">
       <svg class="ig" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.42-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16M12 0C8.74 0 8.33.01 7.05.07c-1.27.06-2.15.26-2.91.56-.79.3-1.46.72-2.12 1.38A5.9 5.9 0 0 0 .63 4.14c-.3.76-.5 1.64-.56 2.91C.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.3.79.72 1.46 1.38 2.12a5.9 5.9 0 0 0 2.12 1.38c.76.3 1.64.5 2.91.56C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56.79-.3 1.46-.72 2.12-1.38a5.9 5.9 0 0 0 1.38-2.12c.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91a5.9 5.9 0 0 0-1.38-2.12A5.9 5.9 0 0 0 19.86.63c-.76-.3-1.64-.5-2.91-.56C15.67.01 15.26 0 12 0Zm0 5.84a6.16 6.16 0 1 0 0 12.32 6.16 6.16 0 0 0 0-12.32Zm0 10.16a4 4 0 1 1 0-8 4 4 0 0 1 0 8Zm7.85-10.4a1.44 1.44 0 1 1-2.88 0 1.44 1.44 0 0 1 2.88 0Z"/></svg>
@@ -355,65 +360,67 @@
 <div class="band">
   <div class="in">
     <div class="figs">
-      <div class="fig"><b>8</b><span><span class="zh">年厨房电器经验</span><span class="en">years in kitchen appliances</span></span></div>
-      <div class="fig"><b><span class="zh">1<em>对</em>1</span><span class="en">1-on-1</span></b><span><span class="zh">下单后上门教到会</span><span class="en">on-site training after you buy</span></span></div>
-      <div class="fig"><b>1000+</b><span><span class="zh">顾客选对电器</span><span class="en">customers helped to choose</span></span></div>
+      <div class="fig"><b>8</b><span><span class="zh">年厨房电器经验</span><span class="en">years in kitchen appliances</span><span class="bm">tahun dalam peralatan dapur</span></span></div>
+      <div class="fig"><b><span class="zh">1<em>对</em>1</span><span class="en">1-on-1</span><span class="bm">1-on-1</span></b><span><span class="zh">下单后上门教到会</span><span class="en">on-site training after you buy</span><span class="bm">diajar di rumah selepas beli</span></span></div>
+      <div class="fig"><b>1000+</b><span><span class="zh">顾客选对电器</span><span class="en">customers helped to choose</span><span class="bm">pelanggan dibantu memilih</span></span></div>
     </div>
   </div>
 </div>
 
 <section id="ask" class="in">
   <p class="eyebrow">Enquiry</p>
-  <h2><span class="zh">你想问什么？</span><span class="en">What do you need?</span></h2>
+  <h2><span class="zh">你想问什么？</span><span class="en">What do you need?</span><span class="bm">Apa yang anda perlukan?</span></h2>
   <p class="lede zh">可以多选。选好之后，底下的 WhatsApp 会自动带上，他一看就知道你要什么。</p>
   <p class="lede en">Pick as many as you like. Your choices go into the WhatsApp message below, so he knows what you need before he replies.</p>
+  <p class="lede bm">Boleh pilih lebih dari satu. Pilihan anda akan dimasukkan ke dalam mesej WhatsApp di bawah, jadi dia tahu apa yang anda perlukan sebelum membalas.</p>
 
   <ul class="tiles" id="cats">
     <li><button type="button" aria-pressed="false" data-msg="Induction Cooker Hob 电炉">
-      <span class="t-en">Induction Cooker Hob</span><span class="t-zh zh">电炉</span>
-      <span class="t-mark"><i></i><span class="zh">选这个</span><span class="en">Select</span></span></button></li>
+      <span class="t-en">Induction Cooker Hob</span><span class="t-zh zh">电炉</span><span class="t-zh bm">Dapur Induksi</span>
+      <span class="t-mark"><i></i><span class="zh">选这个</span><span class="en">Select</span><span class="bm">Pilih</span></span></button></li>
     <li><button type="button" aria-pressed="false" data-msg="Gas Hob 煤气炉">
-      <span class="t-en">Gas Hob</span><span class="t-zh zh">煤气炉</span>
-      <span class="t-mark"><i></i><span class="zh">选这个</span><span class="en">Select</span></span></button></li>
+      <span class="t-en">Gas Hob</span><span class="t-zh zh">煤气炉</span><span class="t-zh bm">Dapur Gas</span>
+      <span class="t-mark"><i></i><span class="zh">选这个</span><span class="en">Select</span><span class="bm">Pilih</span></span></button></li>
     <li><button type="button" aria-pressed="false" data-msg="Hood 油烟机">
-      <span class="t-en">Hood</span><span class="t-zh zh">油烟机</span>
-      <span class="t-mark"><i></i><span class="zh">选这个</span><span class="en">Select</span></span></button></li>
+      <span class="t-en">Hood</span><span class="t-zh zh">油烟机</span><span class="t-zh bm">Hud Dapur</span>
+      <span class="t-mark"><i></i><span class="zh">选这个</span><span class="en">Select</span><span class="bm">Pilih</span></span></button></li>
     <li><button type="button" aria-pressed="false" data-msg="Pressure Cooker Air Fryer 气压空气炸锅">
-      <span class="t-en">Pressure Cooker Air Fryer</span><span class="t-zh zh">气压空气炸锅</span>
-      <span class="t-mark"><i></i><span class="zh">选这个</span><span class="en">Select</span></span></button></li>
+      <span class="t-en">Pressure Cooker Air Fryer</span><span class="t-zh zh">气压空气炸锅</span><span class="t-zh bm">Air Fryer Bertekanan</span>
+      <span class="t-mark"><i></i><span class="zh">选这个</span><span class="en">Select</span><span class="bm">Pilih</span></span></button></li>
     <li><button type="button" aria-pressed="false" data-msg="Oven 烤箱">
-      <span class="t-en">Oven</span><span class="t-zh zh">烤箱</span>
-      <span class="t-mark"><i></i><span class="zh">选这个</span><span class="en">Select</span></span></button></li>
+      <span class="t-en">Oven</span><span class="t-zh zh">烤箱</span><span class="t-zh bm">Ketuhar</span>
+      <span class="t-mark"><i></i><span class="zh">选这个</span><span class="en">Select</span><span class="bm">Pilih</span></span></button></li>
     <li><button type="button" aria-pressed="false" data-msg="Blender 搅拌机">
-      <span class="t-en">Blender</span><span class="t-zh zh">搅拌机</span>
-      <span class="t-mark"><i></i><span class="zh">选这个</span><span class="en">Select</span></span></button></li>
+      <span class="t-en">Blender</span><span class="t-zh zh">搅拌机</span><span class="t-zh bm">Pengisar</span>
+      <span class="t-mark"><i></i><span class="zh">选这个</span><span class="en">Select</span><span class="bm">Pilih</span></span></button></li>
     <li><button type="button" aria-pressed="false" data-msg="Air Purifier 空气净化机">
-      <span class="t-en">Air Purifier</span><span class="t-zh zh">空气净化机</span>
-      <span class="t-mark"><i></i><span class="zh">选这个</span><span class="en">Select</span></span></button></li>
+      <span class="t-en">Air Purifier</span><span class="t-zh zh">空气净化机</span><span class="t-zh bm">Penulen Udara</span>
+      <span class="t-mark"><i></i><span class="zh">选这个</span><span class="en">Select</span><span class="bm">Pilih</span></span></button></li>
     <li><button type="button" aria-pressed="false" data-msg="Water Dispenser 饮水机">
-      <span class="t-en">Water Dispenser</span><span class="t-zh zh">饮水机</span>
-      <span class="t-mark"><i></i><span class="zh">选这个</span><span class="en">Select</span></span></button></li>
+      <span class="t-en">Water Dispenser</span><span class="t-zh zh">饮水机</span><span class="t-zh bm">Dispenser Air</span>
+      <span class="t-mark"><i></i><span class="zh">选这个</span><span class="en">Select</span><span class="bm">Pilih</span></span></button></li>
     <li><button type="button" aria-pressed="false" data-msg="Ozone Machine 臭氧发生器">
-      <span class="t-en">Ozone Machine</span><span class="t-zh zh">臭氧发生器</span>
-      <span class="t-mark"><i></i><span class="zh">选这个</span><span class="en">Select</span></span></button></li>
+      <span class="t-en">Ozone Machine</span><span class="t-zh zh">臭氧发生器</span><span class="t-zh bm">Mesin Ozon</span>
+      <span class="t-mark"><i></i><span class="zh">选这个</span><span class="en">Select</span><span class="bm">Pilih</span></span></button></li>
     <li><button type="button" aria-pressed="false" data-msg="Vacuum Cleaner 吸尘机">
-      <span class="t-en">Vacuum Cleaner</span><span class="t-zh zh">吸尘机</span>
-      <span class="t-mark"><i></i><span class="zh">选这个</span><span class="en">Select</span></span></button></li>
+      <span class="t-en">Vacuum Cleaner</span><span class="t-zh zh">吸尘机</span><span class="t-zh bm">Pembersih Vakum</span>
+      <span class="t-mark"><i></i><span class="zh">选这个</span><span class="en">Select</span><span class="bm">Pilih</span></span></button></li>
     <li><button type="button" aria-pressed="false" data-msg="Others 其他产品">
-      <span class="t-en">Others</span><span class="t-zh zh">其他产品</span>
-      <span class="t-mark"><i></i><span class="zh">选这个</span><span class="en">Select</span></span></button></li>
+      <span class="t-en">Others</span><span class="t-zh zh">其他产品</span><span class="t-zh bm">Lain-lain</span>
+      <span class="t-mark"><i></i><span class="zh">选这个</span><span class="en">Select</span><span class="bm">Pilih</span></span></button></li>
     <li><button type="button" aria-pressed="false" data-collab="1" data-msg="Collaboration">
-      <span class="t-en">Collaboration</span><span class="t-zh zh">合作洽谈</span>
-      <span class="t-mark"><i></i><span class="zh">选这个</span><span class="en">Select</span></span></button></li>
+      <span class="t-en">Collaboration</span><span class="t-zh zh">合作洽谈</span><span class="t-zh bm">Kerjasama</span>
+      <span class="t-mark"><i></i><span class="zh">选这个</span><span class="en">Select</span><span class="bm">Pilih</span></span></button></li>
   </ul>
 </section>
 
 <div class="band">
   <section id="where" class="in">
     <p class="eyebrow">Coverage</p>
-    <h2><span class="zh">你在哪一区？</span><span class="en">Which area are you in?</span></h2>
+    <h2><span class="zh">你在哪一区？</span><span class="en">Which area are you in?</span><span class="bm">Anda di kawasan mana?</span></h2>
     <p class="lede zh">告诉他地区，送货和安装排期一次就讲得清楚。</p>
     <p class="lede en">Tell him your area and he can sort out delivery and installation dates in one go.</p>
+  <p class="lede bm">Beritahu kawasan anda, dan dia boleh aturkan tarikh penghantaran dan pemasangan sekali gus.</p>
 
     <ul class="segs" id="zones">
       <li><button type="button" aria-pressed="false">SEL</button></li>
@@ -425,21 +432,22 @@
 
     <p class="note zh">上门服务是教使用与保养，给在他这里下单的顾客，不提供维修。</p>
     <p class="note en">On-site visits cover how to use and maintain the appliance, for customers who bought from him. Repairs are not included.</p>
+  <p class="note bm">Lawatan ke rumah adalah untuk mengajar cara guna dan penjagaan, khas untuk pelanggan yang membeli daripadanya. Tidak termasuk pembaikan.</p>
   </section>
 </div>
 
 <section id="contact" class="in">
   <p class="eyebrow">Contact</p>
-  <h2><span class="zh">直接找他</span><span class="en">Reach him directly</span></h2>
+  <h2><span class="zh">直接找他</span><span class="en">Reach him directly</span><span class="bm">Hubungi dia terus</span></h2>
 
   <div class="contact">
     <span class="num" id="num">+60 14-339 9971</span>
-    <button class="ghost" type="button" id="copyNum"><span class="zh">复制号码</span><span class="en">Copy number</span></button>
+    <button class="ghost" type="button" id="copyNum"><span class="zh">复制号码</span><span class="en">Copy number</span><span class="bm">Salin nombor</span></button>
   </div>
 
   <div class="contact mailrow">
     <a class="mail" id="mail" href="mailto:skysky970412@gmail.com">skysky970412@gmail.com</a>
-    <button class="ghost" type="button" id="copyMail"><span class="zh">复制邮箱</span><span class="en">Copy email</span></button>
+    <button class="ghost" type="button" id="copyMail"><span class="zh">复制邮箱</span><span class="en">Copy email</span><span class="bm">Salin e-mel</span></button>
   </div>
 
   <div class="social">
@@ -462,12 +470,12 @@
 <div class="bar">
   <div class="in">
     <div class="barTxt">
-      <b><span class="zh">WhatsApp 咨询</span><span class="en">Message him on WhatsApp</span></b>
+      <b><span class="zh">WhatsApp 咨询</span><span class="en">Message him on WhatsApp</span><span class="bm">WhatsApp dia</span></b>
       <span id="barSub"></span>
     </div>
     <a class="cta" id="wa" href="#">
       <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.87 9.87 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.19 8.19 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23Zm4.52-6.17c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.43.13-.15.17-.25.25-.41.08-.17.04-.31-.02-.44-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.87.86-.87 2.08 0 1.23.9 2.42 1.02 2.58.12.17 1.76 2.68 4.26 3.76.6.26 1.06.41 1.42.53.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.08.14-1.18-.06-.11-.22-.17-.47-.29Z"/></svg>
-      <span class="zh">咨询</span><span class="en">Chat</span>
+      <span class="zh">咨询</span><span class="en">Chat</span><span class="bm">Tanya</span>
     </a>
   </div>
 </div>
@@ -481,30 +489,44 @@
   var zones = document.getElementById("zones");
   var zh = document.getElementById("lgzh");
   var en = document.getElementById("lgen");
+  var bm = document.getElementById("lgbm");
   var region = null;
 
   // phones not set to Chinese open in English
+  // Malay phones open in BM
+  function byDevice(){
+    var l = navigator.language || "";
+    if(/^(ms|id)/i.test(l)) bm.checked = true;
+    else if(!/^zh/i.test(l)) en.checked = true;
+  }
   try{
     var saved = localStorage.getItem("skylang");
     if(saved === "en") en.checked = true;
-    else if(saved !== "zh" && !/^zh/i.test(navigator.language || "")) en.checked = true;
-  }catch(e){
-    if(!/^zh/i.test(navigator.language || "")) en.checked = true;
-  }
+    else if(saved === "bm") bm.checked = true;
+    else if(saved !== "zh") byDevice();
+  }catch(e){ byDevice(); }
 
   function isEn(){ return en.checked; }
+  function isBm(){ return bm.checked; }
+  function cur(){ return isBm() ? "bm" : isEn() ? "en" : "zh"; }
   function latin(t){ return t.replace(/\s*[\u4e00-\u9fff][\s\S]*$/, "").trim(); }
 
   function refresh(){
-    document.documentElement.lang = isEn() ? "en" : "zh-Hans";
+    document.documentElement.lang = isBm() ? "ms" : isEn() ? "en" : "zh-Hans";
 
     var on = Array.prototype.slice.call(cats.querySelectorAll('button[aria-pressed="true"]'));
     var collab = on.filter(function(b){ return b.dataset.collab; });
     var picks  = on.filter(function(b){ return !b.dataset.collab; });
-    var items  = picks.map(function(b){ return isEn() ? latin(b.dataset.msg) : b.dataset.msg; });
+    var items  = picks.map(function(b){ return (isEn() || isBm()) ? latin(b.dataset.msg) : b.dataset.msg; });
 
     var msg;
-    if(isEn()){
+    if(isBm()){
+      msg = "Hi Sky";
+      if(items.length) msg += ", saya ingin bertanya tentang " + items.join(", ");
+      else if(!collab.length) msg += ", saya ingin bertanya tentang peralatan dapur";
+      if(collab.length) msg += items.length ? ". Saya juga ingin berbincang tentang kerjasama" : ", saya ingin berbincang tentang kerjasama";
+      if(region) msg += ". Saya di " + region;
+    }else if(isEn()){
       msg = "Hi Sky";
       if(items.length) msg += ", I'd like to ask about " + items.join(", ");
       else if(!collab.length) msg += ", I'd like to ask about kitchen appliances";
@@ -522,21 +544,22 @@
     var bits = [];
     if(items.length){
       if(items.length === 1) bits.push(items[0]);
-      else bits.push(isEn() ? items.length + " items" : items.length + " 个项目");
+      else bits.push(isBm() ? items.length + " item" : isEn() ? items.length + " items" : items.length + " 个项目");
     }
-    if(collab.length) bits.push(isEn() ? "Collaboration" : "合作洽谈");
+    if(collab.length) bits.push(isBm() ? "Kerjasama" : isEn() ? "Collaboration" : "合作洽谈");
     if(region) bits.push(region);
     sub.textContent = bits.length
       ? bits.join(" · ")
-      : (isEn() ? "Pick what you need — he'll reply faster" : "选你要问的项目，他会更快回你");
+      : (isBm() ? "Pilih apa yang anda perlukan — dia akan balas lebih cepat" : isEn() ? "Pick what you need — he'll reply faster" : "选你要问的项目，他会更快回你");
   }
 
   function remember(){
-    try{ localStorage.setItem("skylang", isEn() ? "en" : "zh"); }catch(e){}
+    try{ localStorage.setItem("skylang", cur()); }catch(e){}
     refresh();
   }
   zh.addEventListener("change", remember);
   en.addEventListener("change", remember);
+  bm.addEventListener("change", remember);
 
   cats.addEventListener("click", function(e){
     var b = e.target.closest("button");
@@ -560,10 +583,10 @@
     var node = document.getElementById(nodeId);
     if(!copyBtn || !node) return;
     copyBtn.addEventListener("click", function(){
-      var label = copyBtn.querySelector(isEn() ? ".en" : ".zh");
+      var label = copyBtn.querySelector("." + cur());
       var original = label ? label.textContent : "";
       function done(){
-        if(label) label.textContent = isEn() ? "Copied" : "已复制";
+        if(label) label.textContent = isBm() ? "Disalin" : isEn() ? "Copied" : "已复制";
         copyBtn.classList.add("done");
         setTimeout(function(){
           if(label) label.textContent = original;
